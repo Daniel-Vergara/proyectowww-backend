@@ -10,6 +10,7 @@ class UsuarioSerializer(serializers.ModelSerializer):
             'nombre',
             'apodo',
             'password',
+            'avatar',
         )
 
 class LoginSerializer(serializers.ModelSerializer):
@@ -18,4 +19,15 @@ class LoginSerializer(serializers.ModelSerializer):
         fields = (
             'email',
             'password',
+        )
+
+class ModificarUsuarioSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Usuario
+        fields = (
+            'email',
+            'nombre',
+            'apodo',
+            'password',
+            'avatar',
         )
