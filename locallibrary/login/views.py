@@ -60,12 +60,18 @@ class ModificarUsuarioView(APIView):
         apodo = data['apodo']
         password = data['password']
         avatar = data['avatar']
+        is_active = data['is_active']
 
-
-        if Usuario.objects.filter(apodo=apodo).exists():
-            return Response({'error': 'Este apodo ya está en uso'})
+        if is_active:
+            Usuario.objects.filter(email=email).update(is_active = False)
+            return Response({'success': 'El usuario ha sido inhabilitado exitosamente'})
+        
         else:
-            Usuario.objects.filter(email=email).update(nombre=nombre, apodo=apodo, password=password, avatar=avatar)
-            return Response({'success': 'Se han actualizado los datos del usuario'})
+            if Usuario.objects.filter(apodo=apodo).exists():
+                return Response({'error': 'Este apodo ya está en uso'})
+            else:
+                Usuario.objects.filter(email=email).update(nombre=nombre, apodo=apodo, password=password, avatar=avatar)
+                return Response({'success': 'Se han actualizado los datos del usuario'})
+        
 
 

@@ -30,4 +30,5 @@ class ModificarUsuarioSerializer(serializers.ModelSerializer):
             'apodo',
             'password',
             'avatar',
+            'is_active',
         )
