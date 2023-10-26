@@ -6,6 +6,7 @@ class Usuario(models.Model):
     nombre = models.CharField(max_length=128)
     apodo = models.CharField(unique=True, max_length=128)
     password = models.CharField(max_length=128)
+    avatar = models.CharField(max_length=128)
     is_active = models.BooleanField(default=True)
 
     def _str_(self):
