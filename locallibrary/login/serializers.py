@@ -25,9 +25,15 @@ class ModificarUsuarioSerializer(serializers.ModelSerializer):
     class Meta:
         model = Usuario
         fields = (
-            'email',
             'nombre',
             'apodo',
             'password',
             'avatar',
+        )
+
+class InactivarUsuarioSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Usuario
+        fields = (
+            'is_active',
         )
